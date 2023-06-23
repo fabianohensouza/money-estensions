@@ -1,0 +1,28 @@
+name: Build and Deploy package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@main
+
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '7.0.x'
+
+    - name: Build with dotnet
+      run: dotnet build --configuration Release #Command to build a final version of the project
+
+    - name: Test
+      run: dotnet test #Running a test of the code - if it fails the process will be stoped
+
+    - name: Create yhe Package
+      run: dotnet pack --configuration Release #Command to create a package of the project
+
