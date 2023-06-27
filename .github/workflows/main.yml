@@ -23,7 +23,7 @@ jobs:
     - name: Test
       run: dotnet test #Running a test of the code - if it fails the process will be stoped
 
-    - name: Create yhe Package
+    - name: Create The Package
       run: dotnet pack --configuration Release #Command to create a package of the project
 
     - name: Publish
