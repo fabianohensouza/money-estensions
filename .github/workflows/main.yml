@@ -26,3 +26,6 @@ jobs:
     - name: Create yhe Package
       run: dotnet pack --configuration Release #Command to create a package of the project
 
+    - name: Publish
+      run: dotnet nuget push "MoneyExtension/bin/Release/*.nupkg" -k ${{ secrets.NUGET_TOKEN}} -s https://api.nuget.org/v3/index.json
+
